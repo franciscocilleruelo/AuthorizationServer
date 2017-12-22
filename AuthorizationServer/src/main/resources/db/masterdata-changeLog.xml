@@ -1,0 +1,8 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext xsd/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog xsd/dbchangelog-3.5.xsd">
+	<!-- Incluir mediante changset:
+	Datos de clientes en la tabla oauth_client_details
+	Datos de usuarios en la tabla USERS -->
+</databaseChangeLog>

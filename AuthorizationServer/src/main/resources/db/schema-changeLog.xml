@@ -1,0 +1,119 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext xsd/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog xsd/dbchangelog-3.5.xsd">
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-34">
+		<createTable tableName="oauth_access_token">
+			<column name="authentication_id" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="token_id" type="VARCHAR(256)" />
+			<column name="token" type="BLOB" />
+			<column name="user_name" type="VARCHAR(256)" />
+			<column name="client_id" type="VARCHAR(256)" />
+			<column name="authentication" type="BLOB" />
+			<column name="refresh_token" type="VARCHAR(256)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-35">
+		<createTable tableName="oauth_approvals">
+			<column name="userId" type="VARCHAR(256)" />
+			<column name="clientId" type="VARCHAR(256)" />
+			<column name="scope" type="VARCHAR(256)" />
+			<column name="status" type="VARCHAR(10)" />
+			<column name="expiresAt" type="datetime(6)" />
+			<column name="lastModifiedAt" type="datetime(6)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-36">
+		<createTable tableName="oauth_client_details">
+			<column name="client_id" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="resource_ids" type="VARCHAR(256)" />
+			<column name="client_secret" type="VARCHAR(256)" />
+			<column name="scope" type="VARCHAR(256)" />
+			<column name="authorized_grant_types" type="VARCHAR(256)" />
+			<column name="web_server_redirect_uri" type="VARCHAR(256)" />
+			<column name="authorities" type="VARCHAR(256)" />
+			<column name="access_token_validity" type="INT" />
+			<column name="refresh_token_validity" type="INT" />
+			<column name="additional_information" type="VARCHAR(4096)" />
+			<column name="autoapprove" type="VARCHAR(256)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-37">
+		<createTable tableName="oauth_client_token">
+			<column name="authentication_id" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="token_id" type="VARCHAR(256)" />
+			<column name="token" type="BLOB" />
+			<column name="user_name" type="VARCHAR(256)" />
+			<column name="client_id" type="VARCHAR(256)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-38">
+		<createTable tableName="oauth_code">
+			<column name="code" type="VARCHAR(256)" />
+			<column name="authentication" type="BLOB" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-39">
+		<createTable tableName="oauth_refresh_token">
+			<column name="token_id" type="VARCHAR(256)" />
+			<column name="token" type="BLOB" />
+			<column name="authentication" type="BLOB" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-103">
+		<addPrimaryKey columnNames="authentication_id"
+			constraintName="PRIMARY" tableName="oauth_access_token" />
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-104">
+		<addPrimaryKey columnNames="client_id" constraintName="PRIMARY"
+			tableName="oauth_client_details" />
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-105">
+		<addPrimaryKey columnNames="authentication_id"
+			constraintName="PRIMARY" tableName="oauth_client_token" />
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-4">
+		<createTable tableName="clientdetails">
+			<column name="appId" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="resourceIds" type="VARCHAR(256)" />
+			<column name="appSecret" type="VARCHAR(256)" />
+			<column name="scope" type="VARCHAR(256)" />
+			<column name="grantTypes" type="VARCHAR(256)" />
+			<column name="redirectUrl" type="VARCHAR(256)" />
+			<column name="authorities" type="VARCHAR(256)" />
+			<column name="access_token_validity" type="INT" />
+			<column name="refresh_token_validity" type="INT" />
+			<column name="additionalInformation" type="LONGTEXT" />
+			<column name="autoApproveScopes" type="VARCHAR(256)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo (generated)" id="1511458994295-188">
+		<createIndex indexName="Pk_ClientDetails" tableName="clientdetails">
+			<column name="appId" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo" id="191220171100">
+		<createTable tableName="USERS">
+			<column name="USERNAME" type="VARCHAR(200)">
+				<constraints nullable="false" />
+			</column>
+			<column name="PASSWORD" type="VARCHAR(256)" />
+			<column name="ACCOUNTNONEXPIRED" type="BIT" defaultValue="1"/>
+			<column name="ACCOUNTNONLOCKED" type="BIT"  defaultValue="1"/>
+			<column name="CREDENTIALSNONEXPIRED" type="BIT"  defaultValue="1"/>
+			<column name="ENABLED" type="BIT"  defaultValue="1"/>
+		</createTable>
+	</changeSet>
+	<changeSet author="francisco.cilleruelo" id="191220171104">
+		<addPrimaryKey columnNames="USERNAME" constraintName="PRIMARY"
+			tableName="USERS" />
+	</changeSet>
+</databaseChangeLog>
